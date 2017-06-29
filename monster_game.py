@@ -1,8 +1,7 @@
 import pygame
 import random
+import time
 
-def randomizer():
-    
 def main():
     width = 510
     height = 480
