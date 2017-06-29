@@ -77,8 +77,10 @@ def main():
     monster_x = 50
     monster_y = 50
     monster = Monster("Monster", monster_x, monster_y, width, height)
+    random_num = 3
+    change_dir_countdown = 120
     stop_game = False
-
+    
     while not stop_game:
         for event in pygame.event.get():
 
@@ -96,8 +98,32 @@ def main():
         # Game display
         screen.blit(hero_image, (510/2, 480/2))
         
-        monster.move_nw(monster_image,2)
+        #move the monster random directions
         
+        if change_dir_countdown == 0:
+            change_dir_countdown = 120
+            random_num = random.randint(1,8)
+
+        if random_num == 1:     
+            monster.move_east(monster_image, 2)
+        elif random_num == 2:
+            monster.move_west(monster_image, 2)
+        elif random_num == 3:
+            monster.move_north(monster_image, 2)          
+        elif random_num == 4:
+            monster.move_south(monster_image, 2)
+        elif random_num == 5:
+            monster.move_ne(monster_image, 2)
+        elif random_num == 6:
+            monster.move_nw(monster_image, 2)
+        elif random_num == 7:
+            monster.move_se(monster_image, 2)   
+        elif random_num == 8:
+            monster.move_sw(monster_image, 2)                   
+
+
+        change_dir_countdown -= 1    
+
 
         pygame.display.update()
         clock.tick(60)
