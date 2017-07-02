@@ -74,7 +74,7 @@ def main():
             if self.x <= 0 or self.y >= self.y <= 0:
                 self.x = self.screen_width
                 self.y = self.screen_height
-     
+     #need to refactor this movement and grab code from cat game
     class Hero(object):
         def __init__(self,name, x, y, play_area_width, play_area_height):
             self.name = name
