@@ -1,10 +1,9 @@
 import pygame
 import random
-import time
 
 def main():
-    width = 510
-    height = 480
+    width = 700
+    height = 700
     blue_color = (97, 159, 182)
 
     pygame.init()
@@ -15,6 +14,10 @@ def main():
     pygame.display.set_caption('My Game')
     clock = pygame.time.Clock()
     
+    KEY_UP = 273
+    KEY_DOWN = 274
+    KEY_LEFT = 276
+    KEY_RIGHT = 275
 
     class Monster(object):
         def __init__(self,name, x, y, screen_width, screen_height):
@@ -23,7 +26,6 @@ def main():
             self.y = y
             self.screen_width = screen_width
             self.screen_height = screen_height
-        
         def move_east(self, icon, speed):
             self.x += speed
             screen.blit(icon, (self.x, self.y))
@@ -72,6 +74,15 @@ def main():
             if self.x <= 0 or self.y >= self.y <= 0:
                 self.x = self.screen_width
                 self.y = self.screen_height
+     
+    class Hero(object):
+        def __init__(self,name, x, y, play_area_width, play_area_height):
+            self.name = name
+            self.x = x
+            self.y = y
+            self.play_area_width = play_area_width
+            self.play_area_height = play_area_height
+
 
     # Game initialization
     monster_x = 50
@@ -94,7 +105,7 @@ def main():
 
         # Draw background
         screen.fill(blue_color)
-        screen.blit(background_image, (0, 0))
+        screen.blit(pygame.transform.scale(background_image,(700,700)), (0, 0))
         # Game display
         screen.blit(hero_image, (510/2, 480/2))
         
